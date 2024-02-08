@@ -1,4 +1,4 @@
-from module.decorator import timer
+# from module.decorator import timer
 
 
 class CustomList:
@@ -6,7 +6,7 @@ class CustomList:
         self.list = list(values)
 
     # @timer
-    def __add__(self,other):
+    def __add__(self, other):
         if isinstance(other, list):
             return CustomList(*self.list, *other)
         elif isinstance(other, CustomList):
@@ -62,7 +62,7 @@ class CustomList:
 
     # @timer
     def append(self, other):
-        if isinstance(other,list):
+        if isinstance(other, list):
             raise TypeError("Can't append list")
         else:
             self.list = [*self.list, other]
@@ -109,7 +109,7 @@ class CustomList:
 
     # @timer
     def pop(self):
-        if len(self.list)==0:
+        if len(self.list) == 0:
             raise IndexError("Cannot pop from an empty list.")
         temp = self.list[-1]
         del self.list[-1]
@@ -120,46 +120,16 @@ class CustomList:
         self.list = self.list[::-1]
 
     # @timer
-    def remove(self,value):
-        for idx,val in enumerate(self.list):
+    def remove(self, value):
+        for idx, val in enumerate(self.list):
             if val == value:
                 del self.list[idx]
                 return
         raise ValueError("Value not in CustomList.")
 
-
     # @timer
-    def sort(self,func=None, reverse=False):
+    def sort(self, func=None, reverse=False):
         self.list.sort(key=func, reverse=reverse)
 
 
 # if __name__=="__main__":
-#     new_list = CustomList(1,2,3)
-    # print(len(new_list))        #len          1.0     O(1)
-    # print(new_list)             #str          2.1     O(N)
-    # print(new_list[1])          #getitem      0.0     O(1)
-    # print(new_list[0:2])        #getitem      0.0     O(1)
-    # del new_list[0]             #delitem      1.2     O(N)
-    # new_list[0] = 10            #setitem      0.0     O(1)
-    # new_list += new_list        #add          2.1     O(N)
-    # new_list.append(33)         #append       1.2     O(1)
-    # new_list.extend(new_list)   #extend       1.0     O(N)
-    # new_list.reverse()          #reverse      1.2     O(N)
-    # new_list.sort(None, True)   #sort         1.0     O(NlogN)
-    # print(new_list.count(1))    #count        1.2     O(N)
-    # print(new_list.pop())       #pop          1.0     O(1)
-    # print(new_list.index(1))    #index        1.0     O(N)
-    # new_list.remove(2)          #remove       2.9     O(N)
-    # new_list.insert(1,20)       #insert       1.2     O(N)
-    # print(not new_list)         #bool         0.7     O(1)
-    # print(33 in new_list)       #contains     1.0     O(N)
-    # print(new_list == [1,2,3])  #eq           1.2     O(N)
-    # print(new_list != [1,2,3])  #eq           1.0     O(N)
-    # print(new_list == new_list)
-    # new_list.clear()            #clear        0.0     O(1)
-    # for val in new_list.generator():    #generator  1.O     O(N)
-    #     print(val)
-    # for val in new_list:            #generator 0.0      O(N)
-    #     print(val)                  #iter       14.8    ?
-
-

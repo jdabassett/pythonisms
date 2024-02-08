@@ -65,6 +65,8 @@ def test_dunder_add(create_custom_list):
     assert new_list == [1,2,3,1,2,3]
     new_list += [1,2,3]
     assert new_list == [1,2,3,1,2,3,1,2,3]
+    new_list += "A"
+    assert new_list == [1,2,3,1,2,3,1,2,3,"A"]
 
 
 # @pytest.mark.skip()
@@ -172,6 +174,9 @@ def test_dunder_eq(create_custom_list):
     assert create_custom_list == new_list
     assert create_custom_list == [1,2,3]
     assert create_custom_list != [2,3]
+
+    with pytest.raises(TypeError):
+        create_custom_list == "A"
 
 
 # @pytest.mark.skip()
