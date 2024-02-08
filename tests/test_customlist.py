@@ -194,6 +194,7 @@ def test_dunder_iter(create_custom_list):
     for val in create_custom_list:
         new_list.remove(val)
     assert new_list == []
+    assert [char for char in create_custom_list] == [1,2,3]
 
 
 @pytest.fixture
